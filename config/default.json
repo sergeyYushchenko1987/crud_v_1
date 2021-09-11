@@ -1,0 +1,14 @@
+{
+  "dataBaseConfig": {
+    "host": "localhost",
+    "user": "root",
+    "password": "31052005",
+    "database": "db_books"
+  },
+  "constants": {
+    "PORT": "3030",
+    "multer": {
+      "directory": "src/files/books"
+    }
+  }
+}
