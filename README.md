@@ -42,7 +42,7 @@ ___
 # Launching
 
     Execute next command from your terminal:
-* npm run serve   
+* node app   
 ___
 ___You can go to testing after server was launched.___
 ___
