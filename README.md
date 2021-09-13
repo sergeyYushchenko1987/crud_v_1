@@ -44,7 +44,7 @@ ___
     Execute next command from your terminal:
 * node app   
 ___
-___You can go to testing after server was launched.___
+___You can go to testing after server will be launched.___
 ___
 
 
