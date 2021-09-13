@@ -1,76 +1,78 @@
-const { executeQueryToDatabase } = require("@servers/DataBaseserver");
-const { getQuery } = require("@models/BookModel/query");
+const { executeQueryToDatabase } = require('@servers/DataBaseserver');
+const { getQuery } = require('@models/BookModel/query');
+
 exports.getAllBooksModel = (callbackResults) => {
-  const query = getQuery("forGetAll");
+  const query = getQuery('forGetAll');
+  let resultsStatus = {};
   executeQueryToDatabase(query, [], (results) => {
     if (results.length === 0) {
-      results = { status: 204, description: "List is empty" };
+      resultsStatus = { status: 204, description: 'List is empty' };
+      callbackResults(resultsStatus);
     }
     callbackResults(results);
   });
 };
 exports.deleteBookModel = (id, callbackResults) => {
-  const query = getQuery("forDelete");
-  executeQueryToDatabase(query, [id], (results) => {
-    results = { status: 204, description: "Item was deleted" };
-    callbackResults(results);
+  const query = getQuery('forDelete');
+  let resultsStatus = {};
+  executeQueryToDatabase(query, [id], () => {
+    resultsStatus = { status: 204, description: 'Item was deleted' };
+    callbackResults(resultsStatus);
   });
 };
 exports.addBookModel = (params, callbackResults) => {
   const { name, author, date, path: file } = params;
-  let checkParams = [];
-  let results = { status: null, description: "" };
-  for (let prop in params) {
-    if (!params[prop]) {
-      checkParams.push(prop);
+  const checkParams = [];
+  const resultsStatus = { status: null, description: '' };
+  Object.keys(params).forEach((key) => {
+    if (!params[key]) {
+      checkParams.push(key);
     }
-  }
+  });
   if (checkParams.length !== 0) {
-    results.status = 400;
-    results.description = `You don't fill in  - ${checkParams}`;
-    JSON.stringify(results);
-    callbackResults(results);
+    resultsStatus.status = 400;
+    resultsStatus.description = `You don't fill in  - ${checkParams}`;
+    callbackResults(resultsStatus);
   } else {
-    const query = getQuery("forAdd");
+    const query = getQuery('forAdd');
     executeQueryToDatabase(query, [name, author, date, file], () => {
-      console.log("add");
-      results.status = 201;
-      results.description = `Ok`;
-      JSON.stringify(results);
-      callbackResults(results);
+      resultsStatus.status = 201;
+      resultsStatus.description = 'Ok';
+      callbackResults(resultsStatus);
     });
   }
 };
 exports.updateBookModel = (params, callbackResults) => {
   const { name, author, date, path: file, id } = params;
-  let checkParams = [];
-  let results = { status: null, description: "" };
-  for (let prop in params) {
-    if (!params[prop]) {
-      checkParams.push(prop);
+  const checkParams = [];
+  const resultsStatus = { status: null, description: '' };
+  Object.keys(params).forEach((key) => {
+    if (!params[key]) {
+      checkParams.push(key);
     }
-  }
+  });
   if (checkParams.length !== 0) {
-    results.status = 400;
-    results.description = `You don't fill in ${checkParams}`;
-    JSON.stringify(results);
-    callbackResults(results);
+    console.log(checkParams);
+    resultsStatus.status = 400;
+    resultsStatus.description = `You don't fill in ${checkParams}`;
+    callbackResults(resultsStatus);
   } else {
-    const query = getQuery("forUpdate");
+    const query = getQuery('forUpdate');
     executeQueryToDatabase(query, [name, author, date, file, id], () => {
-      results.status = 202;
-      results.description = `Updated`;
-      JSON.stringify(results);
-      callbackResults(results);
+      resultsStatus.status = 202;
+      resultsStatus.description = 'Updated';
+      callbackResults(resultsStatus);
     });
   }
 };
 exports.getItemModel = (id, callbackResults) => {
-  const query = getQuery("forGetItem");
+  const query = getQuery('forGetItem');
   executeQueryToDatabase(query, [id], (results) => {
     if (results.length === 0) {
-      results = { status: 204, description: "List is empty" };
+      results = { status: 204, description: 'List is empty' };
+      callbackResults(results);
+    } else {
+      callbackResults(results);
     }
-    callbackResults(results);
   });
 };

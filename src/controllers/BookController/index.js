@@ -4,8 +4,7 @@ const {
   updateBookModel,
   deleteBookModel,
   getItemModel,
-} = require("@models/BookModel");
-
+} = require('@models/BookModel');
 exports.getListBooksController = (request, response) => {
   getAllBooksModel((results) => {
     response.json(results);
@@ -13,7 +12,6 @@ exports.getListBooksController = (request, response) => {
 };
 exports.addBookController = (request, response) => {
   const params = { ...request.files[0], ...request.body, date: new Date() };
-  console.log(request.body, request.files[0]);
   addBookModel(params, (results) => {
     response.json(results);
   });
@@ -25,7 +23,7 @@ exports.updateBookController = (request, response) => {
     date: new Date(),
   };
   updateBookModel(params, (results) => {
-    response.send(results);
+    response.json(results);
   });
 };
 exports.deleteBookController = (request, response) => {
@@ -34,7 +32,7 @@ exports.deleteBookController = (request, response) => {
   });
 };
 exports.getItemController = (request, response) => {
-  let id = request.params.id;
+  const { id } = request.params;
   getItemModel(id, (results) => {
     response.json(results);
   });
