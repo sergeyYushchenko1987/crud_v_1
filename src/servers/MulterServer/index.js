@@ -11,7 +11,7 @@ exports.getUploadMiddleware = () => {
     },
     filename(req, file, cb) {
       const uniqueSuffix = Date.now();
-      cb(null, `${uniqueSuffix}__${file.originalname}`);
+      cb(null, `${uniqueSuffix}_${file.originalname}`);
     },
   });
   return multer({ storage });

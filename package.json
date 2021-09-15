@@ -14,7 +14,8 @@
     "@controllers": "src/controllers",
     "@models": "src/models",
     "@servers": "src/servers",
-    "@routes": "src/routes"
+    "@routes": "src/routes",
+    "@services": "src/services"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

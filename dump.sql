@@ -16,29 +16,79 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `books`
+-- Table structure for table `authors`
 --
 
-DROP TABLE IF EXISTS `books`;
+DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `books` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `book_name` varchar(100) DEFAULT NULL,
-  `book_author` varchar(100) DEFAULT NULL,
-  `book_date` varchar(30) DEFAULT NULL,
-  `book_file` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `authors` (
+  `author_id` int NOT NULL AUTO_INCREMENT,
+  `author_name` varchar(40) DEFAULT NULL,
+  `author_last_name` varchar(40) DEFAULT NULL,
+  `author_email` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `books`
+-- Dumping data for table `authors`
 --
 
-LOCK TABLES `books` WRITE;
-/*!40000 ALTER TABLE `books` DISABLE KEYS */;
-/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+LOCK TABLES `authors` WRITE;
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BOOKS`
+--
+
+DROP TABLE IF EXISTS `BOOKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `BOOKS` (
+  `book_id` int NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(100) DEFAULT NULL,
+  `book_date` varchar(30) DEFAULT NULL,
+  `book_file` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BOOKS`
+--
+
+LOCK TABLES `BOOKS` WRITE;
+/*!40000 ALTER TABLE `BOOKS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `BOOKS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `books_authors`
+--
+
+DROP TABLE IF EXISTS `books_authors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `books_authors` (
+  `book_id` int NOT NULL,
+  `author_id` int NOT NULL,
+  PRIMARY KEY (`book_id`,`author_id`),
+  KEY `author_id` (`author_id`),
+  CONSTRAINT `books_authors_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON DELETE CASCADE,
+  CONSTRAINT `books_authors_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `books_authors`
+--
+
+LOCK TABLES `books_authors` WRITE;
+/*!40000 ALTER TABLE `books_authors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `books_authors` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +100,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-09 13:46:39
+-- Dump completed on 2021-09-15 10:08:20

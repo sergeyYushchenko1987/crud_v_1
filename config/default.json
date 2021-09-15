@@ -8,7 +8,7 @@
   "constants": {
     "PORT": "3030",
     "multer": {
-      "directory": "src/files/books"
+      "directory": "src/uploads"
     }
   }
 }

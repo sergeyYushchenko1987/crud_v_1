@@ -2,19 +2,18 @@ const { Router } = require('express');
 const { getUploadMiddleware } = require('@servers/MulterServer');
 
 const upload = getUploadMiddleware();
-
 const {
   getListBooksController,
   addBookController,
   updateBookController,
   deleteBookController,
-  getItemController,
-} = require('@controllers/BookController');
+  getItemBooksController,
+} = require('@controllers/bookController');
 
 const router = Router();
 
 router.get('/', getListBooksController);
-router.get('/:id', getItemController);
+router.get('/:id', getItemBooksController);
 
 router.post('/', upload.any(), addBookController);
 router.put('/', upload.any(), updateBookController);
