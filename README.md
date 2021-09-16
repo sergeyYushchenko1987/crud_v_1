@@ -1,8 +1,21 @@
-# CRUD
+&nbsp;&nbsp; 
+# ___CREATE READ UPDATE DELETE___
+___
+## ___Table of Contents___
+* [DESCRIPTION](#description)   
+    * [Instalation](#instalation)   
+* [SETTINGS](#settings)            
+* [LAUNCHING](#launching)   
+* [USAGE](#usage) 
+    * [Requests](#requests) 
+    * [Responses](#responses)   
+     
+___
+# CRUD <a id="description"></a>
 
     This code you can use for creating, reading, updating and getting information about added books to database mySQL.
 
-## Installation
+## Installation <a id="instalation"></a>
 
      Bellow you can find out descriding procces installation and list of tools which are necessary for futher work.  
 ___
@@ -19,13 +32,12 @@ ___
 
 * If you have already had all tools, let's go to installation CRUD on your computer:  
   * Open terminal on your computer and follow to folder with your project, for instance: ```cd /Users/macbook/Project```
-  * Next you should initialize GIT in your project folder, execute the command ```git init``` in the terminal.
   * To download CRUD, execute this command ```git clone https://github.com/sergeyYushchenko1987/crud_v_1``` and app will set in your folder.  
   * Install all dependencies which are neсessary for work from package.json ```npm instal```.
   
 ___
 
-# Settings
+# Settings <a id="settings"></a>
 
 
     You should do some settings before can use CRUD. Follow this instruction for the right work of code.
@@ -39,7 +51,7 @@ ___
 * Also you need to have field for downloading file. You can select anything ```name``` for this field.
 ___
 
-# Launching
+# Launching <a id="launching"></a>
 
     Execute next command from your terminal:
 * node app   
@@ -48,12 +60,12 @@ ___You can go to testing after server will be launched.___
 ___
 
 
-# Usage  
+# Usage  <a id="usage"></a>
 
     You can use this package creating http requsts using different metods for this (POST - add object, GET - get object, PUT - update, DELETE - delate) for every operation. You will receive responses in JSON format. 
 ____
 
-### ___REQUESTES___
+### ___REQUESTS___ <a id="requests"></a>
 
 <a href="">_POST_</a>  
 ___
@@ -85,7 +97,7 @@ It's used to delete elements from database. Select method(PUT), url(/book/id), a
 
 ___
 
-### __RESPONSES__
+### __RESPONSES__ <a id="responses"></a>
 
     After every request you will receive resonse in the format JSON.
     On "GET" requests you will receive list of books. On PUT, DELETE, POST requests server will send response with status and description, for example:
